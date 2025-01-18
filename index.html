@@ -3,25 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil</title>
+    <title>Page de Garde</title>
     <style>
-        /* Styles pour la page blanche */
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background-color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
             font-family: Arial, sans-serif;
+        }
+
+      
+                  @font-face {
+        font-family: fin;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Light.woff2?v=1737237373534")
+          format("opentype");
+      }
+      
+      
+                  @font-face {
+        font-family: regular;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Regular.woff2?v=1737237406737")
+          format("opentype");
+      }
+      
+      
+                        @font-face {
+        font-family: gras;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Bold.woff2?v=1737237442516")
+          format("opentype");
+      }
+      
+                          ::selection {
+        background-color: #ffd00082;
+        color: #1b1b20;
+      }
+      
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+       background: linear-gradient(184deg, color(display-p3 0.12 0.28 0.29), #002423);
+            text-align: center;
+        }
+
+        .logo {
+          width: 260px;
+            max-width: 90%;
+            margin-bottom: 20px;
+        }
+
+        .loading-container {
+          margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+          color: #fff;
+                           font-family: "fin" !important;
+        font-weight: 100;
+        }
+
+        .loader {
+            border: 1.5px solid #fff;
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+          margin-top: 3px;
+                    margin-right: -10px;
+
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
 <body>
-    <script>
-        // Redirection automatique vers /login
-        window.location.href = "/login";
+    <div class="container">
+        <img src="https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/Fichier%20406.png?v=1737235041687" alt="Logo" class="logo">
+        <div class="loading-container">
+            <span id="loading-text">Initialisation d'une session</span>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+  <script>
+        const texts = [
+            "Chargement de l'environnement",
+            "Vérification du navigateur",
+            "Analyse des virus",
+            "Contrôle du réseau",
+            "Initialisation d'une session"
+        ];
+        
+        let index = 0;
+        const loadingTextElement = document.getElementById("loading-text");
+
+        setInterval(function() {
+            loadingTextElement.textContent = texts[index];
+            index = (index + 1) % texts.length;
+        }, 1000); // Change text every second
+
+        setTimeout(function() {
+            window.location.href = "/login";
+        }, 5000);
     </script>
 </body>
 </html>

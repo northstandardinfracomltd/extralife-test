@@ -3,169 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de Démonstration</title>
+    <title>Page d'accueil</title>
     <style>
-        * {
+        /* Styles pour la page blanche */
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
+            background-color: white;
             height: 100vh;
-        }
-
-        /* Menu gauche */
-        .left-menu {
-            background-color: #333;
-            color: white;
-            width: 250px;
-            height: 100%;
-            padding: 20px;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .menu-top {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .left-menu h1 {
-            margin-bottom: 30px;
-            font-size: 24px;
-        }
-
-        .menu-buttons button {
-            display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: flex-start;
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 15px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-            width: 100%; /* Full width */
-        }
-
-        .menu-buttons button.active {
-            background-color: #007BFF; /* Bleu pour bouton actif */
-        }
-
-        .menu-buttons button:hover {
-            background-color: #555;
-        }
-
-        .menu-buttons button img {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-        }
-
-        .logout-button {
-            background-color: #FF4C4C;
-            color: white;
-            text-align: center;
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            display: block;
-            width: 100%; /* Full width */
-        }
-
-        .logout-button:hover {
-            background-color: #FF5E5E;
-        }
-
-        /* Section de droite */
-        .right-content {
-            flex-grow: 1;
-            padding: 20px;
-        }
-
-        .right-content h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .embed-container {
-            width: 100%;
-            height: 80vh;
-            border: none;
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
 <body>
-    <!-- Menu vertical à gauche -->
-    <div class="left-menu">
-        <div class="menu-top">
-            <h1>Nom du Logiciel</h1>
-            <div class="menu-buttons">
-                <button data-title="Page Demo One" data-url="https://saasduo.com/">
-                    <img src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016" alt="Icône">
-                    Demo 1
-                </button>
-                <button data-title="Page Demo Two" data-url="https://civilprom.com/">
-                    <img src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016" alt="Icône">
-                    Demo 2
-                </button>
-                <button data-title="Page Demo Three" data-url="https://relay.app/">
-                    <img src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016" alt="Icône">
-                    Demo 3
-                </button>
-            </div>
-        </div>
-        <a href="/logout" class="logout-button">Logout</a>
-    </div>
-
-    <!-- Contenu principal à droite -->
-    <div class="right-content">
-        <h2 id="page-title">Page de Démonstration</h2>
-        <iframe class="embed-container" id="page-frame" src="https://demo.com/" title="Demo Embed"></iframe>
-    </div>
-
     <script>
-        // Récupération des éléments nécessaires
-        const buttons = document.querySelectorAll('.menu-buttons button');
-        const pageTitle = document.getElementById('page-title');
-        const pageFrame = document.getElementById('page-frame');
-
-        // Fonction pour mettre à jour le contenu
-        function updateContent(event) {
-            // Réinitialiser tous les boutons
-            buttons.forEach(button => button.classList.remove('active'));
-
-            // Activer le bouton cliqué
-            const clickedButton = event.currentTarget;
-            clickedButton.classList.add('active');
-
-            // Mettre à jour le titre et l'iframe
-            const newTitle = clickedButton.getAttribute('data-title');
-            const newUrl = clickedButton.getAttribute('data-url');
-
-            pageTitle.textContent = newTitle;
-            pageFrame.src = newUrl;
-        }
-
-        // Ajouter un événement de clic à chaque bouton
-        buttons.forEach(button => button.addEventListener('click', updateContent));
-
-        // Activer par défaut le premier bouton au chargement
-        window.addEventListener('load', () => {
-            if (buttons.length > 0) {
-                buttons[0].click(); // Simule un clic sur le premier bouton
-            }
-        });
+        // Redirection automatique vers /login
+        window.location.href = "/login";
     </script>
 </body>
 </html>

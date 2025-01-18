@@ -159,6 +159,13 @@
 
         // Ajouter un événement de clic à chaque bouton
         buttons.forEach(button => button.addEventListener('click', updateContent));
+
+        // Activer par défaut le premier bouton au chargement
+        window.addEventListener('load', () => {
+            if (buttons.length > 0) {
+                buttons[0].click(); // Simule un clic sur le premier bouton
+            }
+        });
     </script>
 </body>
 </html>

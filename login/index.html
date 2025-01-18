@@ -11,22 +11,52 @@
             height: 100vh;
             display: flex;
         }
+      
+                    ::selection {
+        background-color: #ffd00082;
+        color: #1b1b20;
+      }
+
+      @font-face {
+        font-family: gras;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/0b9708295927d3b9-s.p.woff2?v=1737236978076")
+          format("opentype");
+      }
+      
+            @font-face {
+        font-family: italique;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/1bde41645f6d68a1-s.p.woff2?v=1737236993399")
+          format("opentype");
+      }
+      
+            @font-face {
+        font-family: fin;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/0b9708295927d3b9-s.p.woff2?v=1737236978076")
+          format("opentype");
+      }
+      
+      
         .left-panel {
-            width: 30%;
-            background-color: #002423;
+            width: 35%;
+            background: linear-gradient(184deg, color(display-p3 0.12 0.28 0.29), #002423);
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .left-panel img {
-            max-width: 250px;
+            max-width: 290px;
         }
         .right-panel {
-            width: 70%;
+    background-color: #fff;
+          
+          
+            width: 65%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #fff;
         }
         .login-form {
             width: 100%;
@@ -42,6 +72,8 @@
             margin: 0 0 10px;
             font-size: 26px;
             color: #333;
+                  font-family: "moyen" !important;
+        font-weight: 100;
         }
         .login-form p {
             margin: 0 0 20px;

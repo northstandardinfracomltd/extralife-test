@@ -76,6 +76,18 @@
       }
       
       
+            @media only screen and (max-width: 870px) {
+
+         .left-panel{
+     display: none !important;
+      }
+              
+                    .right-panel {
+width: 100% !important;
+
+        }
+              
+}
       
       
         .left-panel {
@@ -170,7 +182,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
           color: white;
             border: none;
             border-radius: 8px;
-    margin-top: 5px;
+    margin-top: 10px;
           
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -198,9 +210,12 @@ background: color(display-p3 0.12 0.28 0.29) ;
         }
         .error-message {
             display: none;
-            color: red;
+            color: #ff414e;
             font-size: 14px;
             margin-bottom: 10px;
+          
+                                               font-family: "fin" !important;
+        font-weight: 100;
         }
       
                 input:focus,
@@ -265,7 +280,8 @@ background: color(display-p3 0.12 0.28 0.29) ;
             <label for="password">Mot de passe</label>
             <input type="password" id="password" placeholder="Votre mot de passe" required>
             <button class="science" type="submit">Ouvrir une session</button>
-         <br><br>   <a href="#">Contacter le support</a>
+         <br><br>   <a href="https://chat.whatsapp.com/Ef10Xf4yNa923LiTxBQkvQ" target="_blank">Contacter le support</a>
+
           
         <div class="date-time">
             <span id="formattedDate"></span>
@@ -297,7 +313,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
         updateDateTime();  // Appel initial pour afficher l'heure tout de suite
     </script>
 
-              <a href="#">Conditions d'utilisation</a>
+              <a href="/agreement" target="_blank">Conditions d'utilisation</a>
           
         </form>
       

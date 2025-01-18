@@ -112,6 +112,7 @@
             box-sizing: border-box;
                                      font-family: "fin" !important;
         font-weight: 100;
+          margin-top: 5px;
         }
       
            .login-form input:hover {
@@ -129,9 +130,11 @@ background: color(display-p3 0.12 0.28 0.29) ;
           color: white;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+    margin-top: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+          
+                  font-size: 16px;
                                      font-family: "fin" !important;
         font-weight: 100;
         }
@@ -141,7 +144,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
         .login-form a {
             display: block;
             margin-top: 10px;
-            color: #007BFF;
+            color: color(display-p3 0 0.50588 0.94902) !important;
             text-decoration: none;
             font-size: 14px;
                                      font-family: "fin" !important;
@@ -193,7 +196,11 @@ background: color(display-p3 0.12 0.28 0.29) ;
     20% {left: 100%}
     100% {left: 100%}
 }
-      
+               .date-time {   font-size: 14px;
+                                     font-family: "fin" !important;
+        font-weight: 100;
+    padding-top: 17px;
+      padding-bottom: 5px;}
       
     </style>
 </head>
@@ -204,7 +211,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
     <div class="right-panel">
         <form class="login-form" id="loginForm">
             <h1>Accès Infogérance</h1>
-            <p>Lorem ipsum dolor sit amet...</p>
+            <p>Bon retour sur votre logiciel! </p>
           
     
           
@@ -213,8 +220,8 @@ background: color(display-p3 0.12 0.28 0.29) ;
             <input type="text" id="username" placeholder="Votre identifiant" required>
             <label for="password">Mot de passe</label>
             <input type="password" id="password" placeholder="Votre mot de passe" required>
-            <button class="science" type="submit">Se connecter</button>
-            <a href="#">Mot de passe oublié ?</a>
+            <button class="science" type="submit">Ouvrir une session</button>
+         <br><br>   <a href="#">Contacter le support</a>
           
         <div class="date-time">
             <span id="formattedDate"></span>
@@ -228,7 +235,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
             // Format de la date (jour/mois)
             const day = String(now.getDate()).padStart(2, '0');
             const month = String(now.getMonth() + 1).padStart(2, '0');
-            const formattedDate = `Le ${day}/${month}`;
+            const formattedDate = `Nous sommes le ${day}/${month},`;
             document.getElementById('formattedDate').textContent = formattedDate;
 
             // Format de l'heure (heure:minute)
@@ -238,7 +245,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
             // Ajouter un zéro devant les minutes si nécessaire
             minutes = minutes < 10 ? '0' + minutes : minutes;
 
-            const formattedTime = `à ${hours}h${minutes}`;
+            const formattedTime = ` il est ${hours}h${minutes}.`;
             document.getElementById('formattedTime').textContent = formattedTime;
         }
 
@@ -246,6 +253,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
         updateDateTime();  // Appel initial pour afficher l'heure tout de suite
     </script>
 
+              <a href="#">Conditions d'utilisation</a>
           
         </form>
       

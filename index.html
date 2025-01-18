@@ -1,9 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de Garde</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <meta name="google" content="notranslate" />
+    <meta charset="utf-8" />
+      <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExtraLife - Infogérance</title>
+    <link
+      rel="icon"
+      href="https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/colibrio.png?v=1737239648153"
+    />
+    <link rel="canonical" href="extralife.civilprom.com" />
+
+    <meta
+      name="description"
+      content="ExtraLife - Infogérance"
+    />
+    <meta property="og:title" content="ExtraLife - Infogérance" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="extralife.civilprom.com" />
+    <meta
+      property="og:description"
+      content="ExtraLife - Infogérance"
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/SYNERGIUS%20SEO%20Meta.png?v=1737239810065"
+    />
+    <meta
+      name="twitter:card"
+      content="ExtraLife - Infogérance"
+    />
+    <meta
+      name="keywords"
+      content="ExtraLife Infogérance"
+    />
     <style>
         * {
             margin: 0;
@@ -106,24 +140,25 @@
 
   <script>
         const texts = [
-            "Chargement de l'environnement",
+            "Initialisation d'une session",
             "Vérification du navigateur",
             "Analyse des virus",
             "Contrôle du réseau",
-            "Initialisation d'une session"
+            "Installation des mises à jour",
+             "Parfait! Bienvenue",
         ];
         
-        let index = 0;
+        let index = 0; 
         const loadingTextElement = document.getElementById("loading-text");
 
         setInterval(function() {
             loadingTextElement.textContent = texts[index];
             index = (index + 1) % texts.length;
-        }, 1000); // Change text every second
+        }, 1500); // Change text every second
 
         setTimeout(function() {
             window.location.href = "/login";
-        }, 5000);
+        }, 10000);
     </script>
 </body>
 </html>

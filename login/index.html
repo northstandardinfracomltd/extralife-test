@@ -17,26 +17,31 @@
         color: #1b1b20;
       }
 
-      @font-face {
-        font-family: gras;
-        font-weight: bold;
-        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/0b9708295927d3b9-s.p.woff2?v=1737236978076")
-          format("opentype");
-      }
-      
-            @font-face {
-        font-family: italique;
-        font-weight: bold;
-        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/1bde41645f6d68a1-s.p.woff2?v=1737236993399")
-          format("opentype");
-      }
       
             @font-face {
         font-family: fin;
         font-weight: bold;
-        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/0b9708295927d3b9-s.p.woff2?v=1737236978076")
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Light.woff2?v=1737237373534")
           format("opentype");
       }
+      
+      
+                  @font-face {
+        font-family: regular;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Regular.woff2?v=1737237406737")
+          format("opentype");
+      }
+      
+      
+                        @font-face {
+        font-family: gras;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Bold.woff2?v=1737237442516")
+          format("opentype");
+      }
+      
+      
       
       
         .left-panel {
@@ -72,13 +77,15 @@
             margin: 0 0 10px;
             font-size: 26px;
             color: #333;
-                  font-family: "moyen" !important;
+                  font-family: "gras" !important;
         font-weight: 100;
         }
         .login-form p {
             margin: 0 0 20px;
             font-size: 14px;
             color: #666;
+                            font-family: "fin" !important;
+        font-weight: 100;
         }
         .login-form label {
             display: block;
@@ -86,6 +93,8 @@
             margin: 10px 0 5px;
             font-size: 14px;
             color: #444;
+                                     font-family: "fin" !important;
+        font-weight: 100;
         }
         .login-form input {
             width: 100%;
@@ -95,8 +104,27 @@
             border-radius: 8px;
             font-size: 14px;
             box-sizing: border-box;
+                                     font-family: "fin" !important;
+        font-weight: 100;
         }
+      
+           .login-form input:hover {
+         box-shadow: 0 0 0px 4px #8e6fe457;
+        }
+            input:focus,
+      textarea:focus,
+      button:focus {
+        outline: none;
+      }
+
+      textarea {
+        resize: none;
+      }
+      
         .login-form button {
+          box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, .2), inset 0 -1px 2px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .05);
+    
+          
             width: 100%;
             padding: 12px;
             background-color: #007BFF;
@@ -106,6 +134,8 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+                                     font-family: "fin" !important;
+        font-weight: 100;
         }
         .login-form button:hover {
             background-color: #0056b3;
@@ -116,6 +146,8 @@
             color: #007BFF;
             text-decoration: none;
             font-size: 14px;
+                                     font-family: "fin" !important;
+        font-weight: 100;
         }
         .login-form a:hover {
             text-decoration: underline;
@@ -134,7 +166,7 @@
     </div>
     <div class="right-panel">
         <form class="login-form" id="loginForm">
-            <h1>Bienvenue</h1>
+            <h1>Accès Infogérance</h1>
             <p>Lorem ipsum dolor sit amet...</p>
             <div class="error-message" id="error">Identifiant ou mot de passe incorrect.</div>
             <label for="username">Identifiant</label>

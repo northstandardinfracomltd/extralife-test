@@ -207,13 +207,35 @@
             height: 86vh;
             border: none;
         }
+      
+              .ip {
+            font-size: 12px;
+            color: #fff;
+                margin-top: -20px;
+             font-family: "fin" !important;
+        font-weight: 100;
+                text-align: center;
+                          margin-bottom: 20px;
+        }
+        .loading {
+           margin-top: -20px;
+          margin-bottom: 20px;
+            font-size: 12px;
+            color: #fff;
+                
+             font-family: "fin" !important;
+        font-weight: 100;
+                text-align: center;
+        }
+      
     </style>
 </head>
 <body>
     <!-- Menu vertical à gauche -->
     <div class="left-menu">
         <div class="menu-top">
-            <h1>ExtraLife Go</h1>
+            <h1>ExtraLife Go</h1>      <div id="ip-display" class="loading">Authentification IP, Patientez.</div>
+
             <div class="menu-buttons">
                 <button data-title="Vos données et performances" data-url="https://saasduo.com/">
                     <img src="https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/home_24dp_FFFFFF_FILL0_wght200_GRAD0_opsz24.svg?v=1737281849335" alt="Icône">
@@ -312,6 +334,22 @@
     }
   })();
 </script>
+  
+   <script>
+        // Attendre 3 secondes avant d'afficher l'IP
+        setTimeout(() => {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-display').textContent = `IP Autorisée (${data.ip})`;
+                    document.getElementById('ip-display').classList.remove('loading');
+                    document.getElementById('ip-display').classList.add('ip');
+                })
+                .catch(() => {
+                    document.getElementById('ip-display').textContent = "Serveur inaccessible.";
+                });
+        }, 3000); // Délai de 3 secondes
+    </script>
 
 </body>
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon IP Publique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .ip {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .loading {
+            font-size: 18px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Votre adresse IP publique</h1>
+        <div id="ip-display" class="loading">Chargement...</div>
+    </div>
+    <script>
+        // Récupérer l'adresse IP publique via une API
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip-display').textContent = data.ip;
+                document.getElementById('ip-display').classList.remove('loading');
+                document.getElementById('ip-display').classList.add('ip');
+            })
+            .catch(() => {
+                document.getElementById('ip-display').textContent = "Impossible de récupérer l'IP.";
+            });
+    </script>
+</body>
+</html>

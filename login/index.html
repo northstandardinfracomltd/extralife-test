@@ -313,7 +313,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
             // Ajouter un zéro devant les minutes si nécessaire
             minutes = minutes < 10 ? '0' + minutes : minutes;
 
-            const formattedTime = ` il est ${hours}h${minutes}.`;
+            const formattedTime = ` il est ${hours}h${minutes}. Serveur de production utilisé: Oracle à Paris (ODC993).`;
             document.getElementById('formattedTime').textContent = formattedTime;
         }
 

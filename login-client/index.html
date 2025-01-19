@@ -288,38 +288,11 @@ background: color(display-p3 0.12 0.28 0.29) ;
             <label for="password">Mot de passe</label>
             <input type="password" id="password" placeholder="Votre mot de passe" required>
             <button class="science" type="submit">Ouvrir une session</button>
-         <br><br>   <a href="/redirect-2023020" >Contacter le support</a>
+         <br><br>   
 
           
-        <div class="date-time">
-            <span id="formattedDate"></span>
-            <span id="formattedTime"></span>
-        </div>
-          
-      <script>
-        function updateDateTime() {
-            const now = new Date();
 
-            // Format de la date (jour/mois)
-            const day = String(now.getDate()).padStart(2, '0');
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const formattedDate = `Nous sommes le ${day}/${month},`;
-            document.getElementById('formattedDate').textContent = formattedDate;
 
-            // Format de l'heure (heure:minute)
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-
-            // Ajouter un zéro devant les minutes si nécessaire
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-
-            const formattedTime = ` il est ${hours}h${minutes}. Serveur de production utilisé: Oracle à Paris (ODC993).`;
-            document.getElementById('formattedTime').textContent = formattedTime;
-        }
-
-        setInterval(updateDateTime, 1000);  // Met à jour chaque seconde
-        updateDateTime();  // Appel initial pour afficher l'heure tout de suite
-    </script>
 
               <a href="/login" target="_blank">Continuer en tant qu'employé</a>
           

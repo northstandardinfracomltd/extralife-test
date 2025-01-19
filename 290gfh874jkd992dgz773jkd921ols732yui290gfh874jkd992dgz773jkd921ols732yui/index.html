@@ -63,11 +63,20 @@
         }
 
         .left-menu h1 {
-            margin-bottom: 30px;
+          cursor: default;
+              margin-top: 16px;
+            margin-bottom: 35px;
             font-size: 24px;
+          text-align: center;
                             font-family: "gras" !important;
         font-weight: 100;
         }
+      
+      .left-menu h1:hover {
+    transform: scale(1.05);
+    transition-duration: 0.3s;
+    cursor: default !important;
+}
 
         .menu-buttons button {
             display: flex;
@@ -97,11 +106,11 @@
 
             .menu-buttons button.active:hover {
             background-color: #039393; /* Bleu pour bouton actif */
-                                 box-shadow: 0 0 0px 4px #ffcf0338;
+                                 box-shadow: 0 0 0px 4px #0393933d;
           
         }
         .menu-buttons button:hover {
-            background-color: #ffffff0d;
+            background-color: #ffffff05;
                    box-shadow: 0 0 0px 4px #ffcf0338;
 
         }
@@ -155,7 +164,7 @@
 
         .embed-container {
             width: 100%;
-            height: 80vh;
+            height: 87vh;
             border: none;
         }
     </style>
@@ -169,6 +178,10 @@
                 <button data-title="Statistiques" data-url="https://saasduo.com/">
                     <img src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016" alt="Icône">
                     Statistiques
+                </button>
+                     <button data-title="Notifications" data-url="https://saasduo.com/">
+                    <img src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016" alt="Icône">
+                    Notifications
                 </button>
                 <button data-title="Clients" data-url="https://civilprom.com/">
                     <img src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016" alt="Icône">
@@ -196,9 +209,9 @@
                     <img src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016" alt="Icône">
                     Stocks
                 </button>
-                <button data-title="Support" data-url="https://civilprom.com/">
+                <button data-title="Centre de support" data-url="https://civilprom.com/">
                     <img src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016" alt="Icône">
-                    Support
+                    Centre de support
                 </button>
 
             </div>

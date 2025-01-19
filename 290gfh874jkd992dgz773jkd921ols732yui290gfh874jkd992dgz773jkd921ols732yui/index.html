@@ -228,13 +228,44 @@
                 text-align: center;
         }
       
+      
+      
+              .loading-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loading-wrapper .loader {
+            border: 1px solid #ffffff30;
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin-left: 7px;
+          margin-top: -39px;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
     </style>
 </head>
 <body>
     <!-- Menu vertical à gauche -->
     <div class="left-menu">
         <div class="menu-top">
-            <h1>ExtraLife Go</h1>      <div id="ip-display" class="loading">Authentification IP, Patientez.</div>
+            <h1>ExtraLife Go</h1>   
+                  <div id="ip-display" class="loading-wrapper">
+            <span class="loading">Authentification IP, Patientez</span>
+            <div class="loader"></div>
+        </div>
+          
 
             <div class="menu-buttons">
                 <button data-title="Vos données et performances" data-url="https://saasduo.com/">
@@ -335,21 +366,25 @@
   })();
 </script>
   
-   <script>
+<script>
+        const loadingWrapper = document.getElementById('ip-display');
+
         // Attendre 3 secondes avant d'afficher l'IP
         setTimeout(() => {
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('ip-display').textContent = `IP Autorisée (${data.ip})`;
-                    document.getElementById('ip-display').classList.remove('loading');
-                    document.getElementById('ip-display').classList.add('ip');
+                    loadingWrapper.innerHTML = `<span class="ip">Parfait! IP Autorisée: ${data.ip}</span>`; // Remplacer le contenu par l'IP
                 })
                 .catch(() => {
-                    document.getElementById('ip-display').textContent = "Serveur inaccessible.";
+                    loadingWrapper.innerHTML = `<span class="ip">IP invalide.</span>`; // Afficher une erreur
                 });
-        }, 3000); // Délai de 3 secondes
-    </script>
+        }, 4000); // Délai de 3 secondes
 
+        // Masquer le loading-wrapper après 20 secondes
+        setTimeout(() => {
+            loadingWrapper.style.display = 'none';
+        }, 7000); // 20 secondes
+    </script>
 </body>
 </html>

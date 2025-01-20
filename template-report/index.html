@@ -128,7 +128,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-          font-size: 16px;
+          font-size: 14px;
     font-family: "fin" !important;
     font-weight: 100;
       margin-bottom: 10px;
@@ -137,17 +137,16 @@
       margin: 0;
     }
     .modal-header button {
-    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, .2), inset 0 -1px 2px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .05);
-    width: 100%;
-    padding: 12px;
+    padding: 8px 12px 9px 12px;
     background: color(display-p3 0.12 0.28 0.29);
     color: white;
     border: none;
-    border-radius: 8px;
-    margin-top: 10px;
+    border-radius: 90px;
+    margin-top: 1px;
+          margin-bottom: 1px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 16px;
+    font-size: 13.5px;
     font-family: "fin" !important;
     font-weight: 100;
     text-align: center;
@@ -184,14 +183,13 @@
 </head>
   
   
-  Voici mon code qui est un tableau, peux-tu ajouter en première colonne une colonne pour cocher chaque ligne (un checkbox designé en css, donne moi juste le CSS supplément dans un bloc de code dystinct.). 
-  Quand c'est coché 
+ 
 <body>
   <button id="new-record-button">Nouveau</button>
   <div id="overlay"></div>
   <div id="add-record-modal" class="modal">
     <div class="modal-header">
-      <h3>Ajouter un enregistrement</h3>
+      <h3>Ajout d'un défibrillateur</h3>
       <button id="close-add-modal">Fermer</button>
     </div>
     <form id="record-form" method="POST" action="https://script.google.com/macros/s/AKfycbx525m0shnFBhOG6iq2tQxQbMlsJHnpf8lksofgrGdMLqb35JVKQ0K7TYLsT9Gspz_8/exec">

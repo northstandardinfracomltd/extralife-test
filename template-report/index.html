@@ -39,7 +39,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0px;
-      padding: 0;
+      padding: 10px;
       background-color: white;
       
     }
@@ -62,12 +62,17 @@
     font-weight: 100;
       color : #474747;
     border-radius: 0px !important;
-            background-color: white;
+    background-color: white;
       cursor: default;
     }
     
     
 
+    td:hover {
+      background-color: #d3d3d329 !important;
+
+
+    }
     
     
     table th {
@@ -88,6 +93,7 @@
     border-radius: 90px;
     margin-top: 1px;
           margin-bottom: 1px;
+      margin-right: 2px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 13.5px;
@@ -148,6 +154,7 @@
     transition: background-color 0.3s ease;
     font-size: 13.5px;
     font-family: "fin" !important;
+      
     font-weight: 100;
     text-align: center;
     text-decoration: none;
@@ -188,15 +195,17 @@
 }
 
 .custom-select {
+      font-size: 13.5px;
+    font-family: "fin" !important;
+          background-color: color(display-p3 0 0.50588 0.94902);
+color: white;
+    font-weight: 100;
+      padding: 8px 10px 9px 10px;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: #f5f5f5;
-  border: 2px solid #ddd;
+  border: 0px solid #ddd;
   border-radius: 50px;
-  color: #333;
-  padding: 10px 20px;
-  font-size: 16px;
   font-family: Arial, sans-serif;
   outline: none;
   cursor: pointer;
@@ -204,10 +213,13 @@
   white-space: nowrap; /* Empêche le texte de passer à la ligne */
 }
 
-.custom-select:hover {
-  background-color: #eee;
-  border-color: #bbb;
-}
+        .custom-select:hover {
+      background-color: color(display-p3 0 0.50588 0.94902);
+    box-shadow: 0 0 0px 4px #2872733d;
+    }
+    
+    
+
 
 .custom-select:focus {
   border-color: #007bff;
@@ -227,7 +239,7 @@
   
 <div class="custom-select-wrapper">
   <select id="colorFilter" class="custom-select">
-    <option value="">Toutes les couleurs</option>
+    <option value="">Toutes Couleurs</option>
     <option value="Red">Red</option>
     <option value="Blue">Blue</option>
     <option value="Grey">Grey</option>

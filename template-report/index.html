@@ -40,7 +40,7 @@
       font-family: Arial, sans-serif;
       margin: 0px;
       padding: 0;
-      background-color: #f9f9f9;
+      background-color: white;
       
     }
     table {
@@ -59,24 +59,50 @@
           font-size: 14px;
     font-family: "fin" !important;
     font-weight: 100;
-            border-radius: 0px !important;
+      color : #474747;
+    border-radius: 0px !important;
+            background-color: white;
+
     }
+    
+    
+
+    
+    
     table th {
       background-color: #d3d3d329;
-      color: white;
           font-size: 14px;
     font-family: "fin" !important;
     font-weight: 100;
             border-radius: 10px;
+            padding: 6px;
+
     }
     button {
     box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, .2), inset 0 -1px 2px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .05);
-    padding: 12px;
+    padding: 8px 12px 8px 12px;
     background: color(display-p3 0.12 0.28 0.29);
     color: white;
     border: none;
-    border-radius: 8px;
-    margin-top: 10px;
+    border-radius: 90px;
+    margin-top: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 13px;
+    font-family: "fin" !important;
+    font-weight: 100;
+    text-align: center;
+    text-decoration: none;
+    }
+    
+    
+      .edit-button button  {
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, .2), inset 0 -1px 2px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .05);
+    padding: 12px;
+    background: red !important;
+    color: white;
+    border: none;
+    border-radius: 80px !important;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 16px;
@@ -85,6 +111,8 @@
     text-align: center;
     text-decoration: none;
     }
+    
+    
     button:hover {
       background-color: #45a049;
     }
@@ -193,7 +221,7 @@
       <label for="edit-couleur">Couleur :</label>
       <input type="text" id="edit-couleur" name="couleur" required>
       <input type="hidden" id="edit-row-index" name="rowIndex">
-      <button type="submit">Modifier</button>
+      <button class="actionbtn" type="submit">Modifier</button>
     </form>
   </div>
   <table>

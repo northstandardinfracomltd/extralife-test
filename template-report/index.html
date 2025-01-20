@@ -179,6 +179,41 @@
     #overlay.active {
       display: block;
     }
+    
+    
+    
+    .custom-select-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #f5f5f5;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  color: #333;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap; /* Empêche le texte de passer à la ligne */
+}
+
+.custom-select:hover {
+  background-color: #eee;
+  border-color: #bbb;
+}
+
+.custom-select:focus {
+  border-color: #007bff;
+}
+
+    
   </style>
 </head>
   
@@ -190,12 +225,15 @@
   
   <button id="new-record-button">Nouveau</button>
   
-<select id="colorFilter">
-  <option value="">Toutes les couleurs</option>
-  <option value="Red">Red</option>
-  <option value="Blue">Blue</option>
-  <option value="Grey">Grey</option>
-</select>
+<div class="custom-select-wrapper">
+  <select id="colorFilter" class="custom-select">
+    <option value="">Toutes les couleurs</option>
+    <option value="Red">Red</option>
+    <option value="Blue">Blue</option>
+    <option value="Grey">Grey</option>
+  </select>
+</div>
+
 
 
   
@@ -369,6 +407,32 @@ document.getElementById('colorFilter').addEventListener('change', function () {
 });
 
     
+    function adjustSelectWidth(selectElement) {
+  // Crée un élément temporaire pour mesurer la largeur
+  const tempElement = document.createElement("span");
+  tempElement.style.visibility = "hidden";
+  tempElement.style.position = "absolute";
+  tempElement.style.whiteSpace = "nowrap";
+  tempElement.style.fontSize = window.getComputedStyle(selectElement).fontSize;
+  tempElement.style.fontFamily = window.getComputedStyle(selectElement).fontFamily;
+
+  // Ajoute le texte de l'option sélectionnée
+  tempElement.textContent = selectElement.options[selectElement.selectedIndex].text;
+
+  document.body.appendChild(tempElement);
+
+  // Ajuste la largeur du select en fonction de la largeur mesurée
+  selectElement.style.width = `${tempElement.offsetWidth + 40}px`;
+
+  // Supprime l'élément temporaire
+  document.body.removeChild(tempElement);
+}
+
+// Applique la fonction lors du chargement de la page et au changement de sélection
+const selectElement = document.getElementById("colorFilter");
+adjustSelectWidth(selectElement);
+selectElement.addEventListener("change", () => adjustSelectWidth(selectElement));
+
   </script>
 </body>
 </html>

@@ -185,7 +185,21 @@
   
  
 <body>
+  
+  
+  
   <button id="new-record-button">Nouveau</button>
+  
+<select id="colorFilter">
+  <option value="">Toutes les couleurs</option>
+  <option value="Red">Red</option>
+  <option value="Blue">Blue</option>
+  <option value="Grey">Grey</option>
+</select>
+
+
+  
+  
   <div id="overlay"></div>
   <div id="add-record-modal" class="modal">
     <div class="modal-header">
@@ -338,6 +352,23 @@
 
     // Charger les données au démarrage
     window.addEventListener("DOMContentLoaded", loadData);
+    
+document.getElementById('colorFilter').addEventListener('change', function () {
+  const filterValue = this.value.toLowerCase();
+  const rows = document.querySelectorAll('table tbody tr');
+
+  rows.forEach(row => {
+    const cellValue = row.cells[1]?.textContent.trim().toLowerCase(); // Colonne "Couleur" (index 1)
+
+    if (!filterValue || cellValue === filterValue) {
+      row.style.display = ''; // Affiche la ligne
+    } else {
+      row.style.display = 'none'; // Cache la ligne
+    }
+  });
+});
+
+    
   </script>
 </body>
 </html>

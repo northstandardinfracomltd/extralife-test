@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spreadsheet Database</title>
+  <style>
+    
+                        ::selection {
+        background-color: #ffd00082;
+        color: #1b1b20;
+      }
+
+      
+            @font-face {
+        font-family: fin;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Light.woff2?v=1737237373534")
+          format("opentype");
+      }
+      
+      
+                  @font-face {
+        font-family: regular;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Regular.woff2?v=1737237406737")
+          format("opentype");
+      }
+      
+      
+                        @font-face {
+        font-family: gras;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Bold.woff2?v=1737237442516")
+          format("opentype");
+      }
+      
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0px;
+      padding: 0;
+      background-color: #f9f9f9;
+      
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+          font-size: 14px;
+    font-family: "fin" !important;
+    font-weight: 100;
+            border-radius: 10px !important;
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 6px;
+      text-align: left;
+          font-size: 14px;
+    font-family: "fin" !important;
+    font-weight: 100;
+            border-radius: 0px !important;
+    }
+    table th {
+      background-color: #d3d3d329;
+      color: white;
+          font-size: 14px;
+    font-family: "fin" !important;
+    font-weight: 100;
+            border-radius: 10px;
+    }
+    button {
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, .2), inset 0 -1px 2px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .05);
+    padding: 12px;
+    background: color(display-p3 0.12 0.28 0.29);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-family: "fin" !important;
+    font-weight: 100;
+    text-align: center;
+    text-decoration: none;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      width: 300px;
+          font-size: 16px;
+    font-family: "fin" !important;
+    font-weight: 100;
+      max-width: 90%;
+    }
+    .modal.active {
+      display: block;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+          font-size: 16px;
+    font-family: "fin" !important;
+    font-weight: 100;
+      margin-bottom: 10px;
+    }
+    .modal-header h3 {
+      margin: 0;
+    }
+    .modal-header button {
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, .2), inset 0 -1px 2px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .05);
+    width: 100%;
+    padding: 12px;
+    background: color(display-p3 0.12 0.28 0.29);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-family: "fin" !important;
+    font-weight: 100;
+    text-align: center;
+    text-decoration: none;
+    }
+    .modal-header button:hover {
+      background-color: #e53935;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    #overlay.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <button id="new-record-button">Nouveau</button>
+  <div id="overlay"></div>
+  <div id="add-record-modal" class="modal">
+    <div class="modal-header">
+      <h3>Ajouter un enregistrement</h3>
+      <button id="close-add-modal">Fermer</button>
+    </div>
+    <form id="record-form" method="POST" action="https://script.google.com/macros/s/AKfycbx525m0shnFBhOG6iq2tQxQbMlsJHnpf8lksofgrGdMLqb35JVKQ0K7TYLsT9Gspz_8/exec">
+      <label for="titre">Titre :</label>
+      <input type="text" id="titre" name="titre" required>
+      <label for="couleur">Couleur :</label>
+      <input type="text" id="couleur" name="couleur" required>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+  <div id="edit-record-modal" class="modal">
+    <div class="modal-header">
+      <h3>Modifier un enregistrement</h3>
+      <button id="close-edit-modal">Fermer</button>
+    </div>
+    <form id="edit-form" method="POST" action="https://script.google.com/macros/s/AKfycbx525m0shnFBhOG6iq2tQxQbMlsJHnpf8lksofgrGdMLqb35JVKQ0K7TYLsT9Gspz_8/exec">
+      <label for="edit-titre">Titre :</label>
+      <input type="text" id="edit-titre" name="titre" required>
+      <label for="edit-couleur">Couleur :</label>
+      <input type="text" id="edit-couleur" name="couleur" required>
+      <input type="hidden" id="edit-row-index" name="rowIndex">
+      <button type="submit">Modifier</button>
+    </form>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Couleur</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="data-table">
+      <!-- Données insérées dynamiquement ici -->
+    </tbody>
+  </table>
+  <script>
+    const apiUrl = "https://script.google.com/macros/s/AKfycbx525m0shnFBhOG6iq2tQxQbMlsJHnpf8lksofgrGdMLqb35JVKQ0K7TYLsT9Gspz_8/exec";
+
+    // Fonction pour ouvrir une popup
+    function openModal(modalId) {
+      document.getElementById("overlay").classList.add("active");
+      document.getElementById(modalId).classList.add("active");
+    }
+
+    // Fonction pour fermer une popup
+    function closeModal(modalId) {
+      document.getElementById("overlay").classList.remove("active");
+      document.getElementById(modalId).classList.remove("active");
+    }
+
+    // Gestion du bouton "Nouveau"
+    document.getElementById("new-record-button").addEventListener("click", () => {
+      openModal("add-record-modal");
+    });
+
+    // Bouton fermer pour la modal d'ajout
+    document.getElementById("close-add-modal").addEventListener("click", () => {
+      closeModal("add-record-modal");
+    });
+
+    // Bouton fermer pour la modal de modification
+    document.getElementById("close-edit-modal").addEventListener("click", () => {
+      closeModal("edit-record-modal");
+    });
+
+    // Soumission du formulaire d'ajout
+    document.getElementById("record-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch(apiUrl, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Enregistrement ajouté avec succès !");
+            this.reset();
+            closeModal("add-record-modal");
+            loadData();
+          } else {
+            alert("Erreur lors de l'ajout.");
+          }
+        })
+        .catch((error) => console.error("Erreur :", error));
+    });
+
+    // Charger les données
+    async function loadData() {
+      const response = await fetch(`${apiUrl}?action=getData`);
+      const records = await response.json();
+      const table = document.getElementById("data-table");
+      table.innerHTML = "";
+      records.forEach(([titre, couleur], index) => {
+        const row = `
+          <tr>
+            <td>${titre}</td>
+            <td>${couleur}</td>
+            <td>
+              <button class="edit-button" data-index="${index + 1}" data-titre="${titre}" data-couleur="${couleur}">Modifier</button>
+            </td>
+          </tr>
+        `;
+        table.innerHTML += row;
+      });
+
+      // Ajouter les événements "Modifier"
+      document.querySelectorAll(".edit-button").forEach((button) =>
+        button.addEventListener("click", (e) => {
+          const rowIndex = e.target.dataset.index;
+          const titre = e.target.dataset.titre;
+          const couleur = e.target.dataset.couleur;
+
+          document.getElementById("edit-titre").value = titre;
+          document.getElementById("edit-couleur").value = couleur;
+          document.getElementById("edit-row-index").value = rowIndex;
+
+          openModal("edit-record-modal");
+        })
+      );
+    }
+
+    // Soumission du formulaire de modification
+    document.getElementById("edit-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      formData.append("action", "editData");
+      fetch(apiUrl, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Enregistrement modifié avec succès !");
+            this.reset();
+            closeModal("edit-record-modal");
+            loadData();
+          } else {
+            alert("Erreur lors de la modification.");
+          }
+        })
+        .catch((error) => console.error("Erreur :", error));
+    });
+
+    // Charger les données au démarrage
+    window.addEventListener("DOMContentLoaded", loadData);
+  </script>
+</body>
+</html>

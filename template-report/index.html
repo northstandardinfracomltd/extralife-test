@@ -1,5 +1,4 @@
-J'ai une colonne nommée "tournee" avec des données.
-Au lieu d'un champ edit simple quand je suis dans le form edit, je veux un type de field dropdown qui propose les values de toutes les values des records dans la colonne tournee. 
+Mais j'ai déjà du code existant : 
 
 
 <!DOCTYPE html>
@@ -281,19 +280,27 @@ color: white;
       <h3>Modifier un enregistrement</h3>
       <button id="close-edit-modal">Fermer</button>
     </div>
-    <form id="edit-form" method="POST" action="https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec">
-      <label for="edit-titre">Titre :</label>
-      <input type="text" id="edit-titre" name="titre" required>
-      <label for="edit-couleur">Couleur :</label>
-      <input type="text" id="edit-couleur" name="couleur" required>
-      <label for="edit-tournee">Tournée :</label>
-    <select id="edit-tournee" name="tournee" class="custom-select">
-      <!-- Les options seront ajoutées dynamiquement ici -->
-    </select>
-      
-      <input type="hidden" id="edit-row-index" name="rowIndex">
-      <button class="actionbtn" type="submit">Modifier</button>
-    </form>
+<form id="edit-form" method="POST" action="https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec">
+  <label for="edit-titre">Titre :</label>
+  <input type="text" id="edit-titre" name="titre" required>
+
+  <label for="edit-couleur">Couleur :</label>
+  <input type="text" id="edit-couleur" name="couleur" required>
+
+  <label for="edit-tournee">Tournée :</label>
+  <!-- Select visible pour l'utilisateur -->
+  <select id="edit-tournee" name="tournee" class="custom-select">
+    <option value="Tournee1">Tournée 1</option>
+    <option value="Tournee2">Tournée 2</option>
+    <option value="Tournee3">Tournée 3</option>
+  </select>
+
+  <!-- Champ masqué pour recevoir la valeur sélectionnée du select -->
+  <input type="text" id="edit-tournee-input" name="tournee" required style="display:none;">
+
+  <input type="hidden" id="edit-row-index" name="rowIndex">
+  <button class="actionbtn" type="submit">Modifier</button>
+</form>
   </div>
   <table>
     <thead>
@@ -470,36 +477,16 @@ selectElement.addEventListener("change", () => adjustSelectWidth(selectElement))
     
     
   </script>
-  <script>
-    // Fonction pour récupérer les valeurs de "tournee" via l'API Google Apps Script
-    function loadTourneeValues() {
-      const url = 'https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec?action=getTourneeValues'; // Remplacez par votre ID de script Apps Script
 
-      // Appel AJAX à l'API Google Apps Script pour obtenir les données
-      fetch(url)
-        .then(response => response.json()) // Convertit la réponse JSON en tableau
-        .then(data => {
-          const dropdown = document.getElementById('tourneeDropdown');
-          dropdown.innerHTML = ''; // Effacer les options existantes
-
-          // Ajouter une option vide au début
-          const defaultOption = document.createElement('option');
-          defaultOption.text = 'Sélectionner une tournée';
-          dropdown.appendChild(defaultOption);
-
-          // Ajouter les valeurs de "tournee" au dropdown
-          data.forEach(tournee => {
-            const option = document.createElement('option');
-            option.value = tournee;
-            option.text = tournee;
-            dropdown.appendChild(option);
-          });
-        })
-        .catch(error => console.error('Erreur lors du chargement des valeurs de la tournée:', error));
-    }
-
-    // Appeler la fonction dès que la page est chargée
-    window.onload = loadTourneeValues;
-  </script>
+<script>
+// Lorsque la sélection change dans le select
+document.getElementById('edit-tournee').addEventListener('change', function() {
+  // Récupère la valeur sélectionnée
+  const selectedValue = this.value;
+  // Colle la valeur dans l'input caché
+  document.getElementById('edit-tournee-input').value = selectedValue;
+});
+</script>
+  
 </body>
 </html>

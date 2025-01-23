@@ -261,6 +261,8 @@ color: white;
       <input type="text" id="titre" name="titre" required>
       <label for="couleur">Couleur :</label>
       <input type="text" id="couleur" name="couleur" required>
+            <label for="tournee">Tournée :</label>
+      <input type="text" id="tournee" name="tournee" required>
       <button type="submit">Enregistrer</button>
     </form>
   </div>
@@ -274,6 +276,9 @@ color: white;
       <input type="text" id="edit-titre" name="titre" required>
       <label for="edit-couleur">Couleur :</label>
       <input type="text" id="edit-couleur" name="couleur" required>
+            <label for="edit-tournee">Tournée :</label>
+      <input type="text" id="edit-tournee" name="tournee" required>
+      
       <input type="hidden" id="edit-row-index" name="rowIndex">
       <button class="actionbtn" type="submit">Modifier</button>
     </form>
@@ -283,6 +288,7 @@ color: white;
       <tr>
         <th>Titre</th>
         <th>Couleur</th>
+         <th>tournee</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -348,13 +354,14 @@ color: white;
       const records = await response.json();
       const table = document.getElementById("data-table");
       table.innerHTML = "";
-      records.forEach(([titre, couleur], index) => {
+      records.forEach(([titre, couleur, tournee], index) => {
         const row = `
           <tr>
             <td>${titre}</td>
             <td>${couleur}</td>
+            <td>${tournee}</td>
             <td>
-              <button class="edit-button" data-index="${index + 1}" data-titre="${titre}" data-couleur="${couleur}">Modifier</button>
+              <button class="edit-button" data-index="${index + 1}" data-titre="${titre}" data-couleur="${couleur}" data-tournee="${tournee}">Modifier</button>
             </td>
           </tr>
         `;
@@ -367,9 +374,11 @@ color: white;
           const rowIndex = e.target.dataset.index;
           const titre = e.target.dataset.titre;
           const couleur = e.target.dataset.couleur;
+          const tournee = e.target.dataset.tournee;
 
           document.getElementById("edit-titre").value = titre;
           document.getElementById("edit-couleur").value = couleur;
+          document.getElementById("edit-tournee").value = tournee;
           document.getElementById("edit-row-index").value = rowIndex;
 
           openModal("edit-record-modal");

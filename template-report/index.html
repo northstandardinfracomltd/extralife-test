@@ -1,6 +1,3 @@
-Mais j'ai déjà du code existant : 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -265,7 +262,7 @@ color: white;
       <h3>Ajout d'un défibrillateur</h3>
       <button id="close-add-modal">Fermer</button>
     </div>
-    <form id="record-form" method="POST" action="https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec">
+    <form id="record-form" method="POST" action="https://script.google.com/macros/s/AKfycbwHeubA5Gnc2HEpI2DWIhGKgI39v5tr2yMfdKLJCG7CulckrIvpZPrB-Bym_I4lAa0R/exec">
       <label for="titre">Titre :</label>
       <input type="text" id="titre" name="titre" required>
       <label for="couleur">Couleur :</label>
@@ -280,7 +277,7 @@ color: white;
       <h3>Modifier un enregistrement</h3>
       <button id="close-edit-modal">Fermer</button>
     </div>
-<form id="edit-form" method="POST" action="https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec">
+<form id="edit-form" method="POST" action="https://script.google.com/macros/s/AKfycbwHeubA5Gnc2HEpI2DWIhGKgI39v5tr2yMfdKLJCG7CulckrIvpZPrB-Bym_I4lAa0R/exec">
   <label for="edit-titre">Titre :</label>
   <input type="text" id="edit-titre" name="titre" required>
 
@@ -289,14 +286,8 @@ color: white;
 
   <label for="edit-tournee">Tournée :</label>
   <!-- Select visible pour l'utilisateur -->
-  <select id="edit-tournee" name="tournee" class="custom-select">
-    <option value="Tournee1">Tournée 1</option>
-    <option value="Tournee2">Tournée 2</option>
-    <option value="Tournee3">Tournée 3</option>
-  </select>
+  <input type="text" id="edit-tournee" name="couleur" required>
 
-  <!-- Champ masqué pour recevoir la valeur sélectionnée du select -->
-  <input type="text" id="edit-tournee-input" name="tournee" required style="display:none;">
 
   <input type="hidden" id="edit-row-index" name="rowIndex">
   <button class="actionbtn" type="submit">Modifier</button>
@@ -316,7 +307,7 @@ color: white;
     </tbody>
   </table>
   <script>
-    const apiUrl = "https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec";
+    const apiUrl = "https://script.google.com/macros/s/AKfycbwHeubA5Gnc2HEpI2DWIhGKgI39v5tr2yMfdKLJCG7CulckrIvpZPrB-Bym_I4lAa0R/exec";
 
     // Fonction pour ouvrir une popup
     function openModal(modalId) {
@@ -478,15 +469,8 @@ selectElement.addEventListener("change", () => adjustSelectWidth(selectElement))
     
   </script>
 
-<script>
-// Lorsque la sélection change dans le select
-document.getElementById('edit-tournee').addEventListener('change', function() {
-  // Récupère la valeur sélectionnée
-  const selectedValue = this.value;
-  // Colle la valeur dans l'input caché
-  document.getElementById('edit-tournee-input').value = selectedValue;
-});
-</script>
+
+
   
 </body>
 </html>

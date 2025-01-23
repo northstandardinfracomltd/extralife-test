@@ -238,6 +238,12 @@ color: white;
 <body>
   
   
+    <h1>Choisir une tournée</h1>
+
+  <!-- Dropdown pour afficher les valeurs de "tournee" -->
+  <select id="tourneeDropdown">
+    <option value="">Chargement...</option>
+  </select>
   
   <button id="new-record-button">Nouveau</button>
   
@@ -260,7 +266,7 @@ color: white;
       <h3>Ajout d'un défibrillateur</h3>
       <button id="close-add-modal">Fermer</button>
     </div>
-    <form id="record-form" method="POST" action="https://script.google.com/macros/s/AKfycbx525m0shnFBhOG6iq2tQxQbMlsJHnpf8lksofgrGdMLqb35JVKQ0K7TYLsT9Gspz_8/exec">
+    <form id="record-form" method="POST" action="https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec">
       <label for="titre">Titre :</label>
       <input type="text" id="titre" name="titre" required>
       <label for="couleur">Couleur :</label>
@@ -275,15 +281,15 @@ color: white;
       <h3>Modifier un enregistrement</h3>
       <button id="close-edit-modal">Fermer</button>
     </div>
-    <form id="edit-form" method="POST" action="https://script.google.com/macros/s/AKfycbx525m0shnFBhOG6iq2tQxQbMlsJHnpf8lksofgrGdMLqb35JVKQ0K7TYLsT9Gspz_8/exec">
+    <form id="edit-form" method="POST" action="https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec">
       <label for="edit-titre">Titre :</label>
       <input type="text" id="edit-titre" name="titre" required>
       <label for="edit-couleur">Couleur :</label>
       <input type="text" id="edit-couleur" name="couleur" required>
       <label for="edit-tournee">Tournée :</label>
-<select id="edit-tournee" name="tournee" required>
-  <!-- Options dynamiques insérées ici -->
-</select>
+    <select id="edit-tournee" name="tournee" class="custom-select">
+      <!-- Les options seront ajoutées dynamiquement ici -->
+    </select>
       
       <input type="hidden" id="edit-row-index" name="rowIndex">
       <button class="actionbtn" type="submit">Modifier</button>
@@ -303,7 +309,7 @@ color: white;
     </tbody>
   </table>
   <script>
-    const apiUrl = "https://script.google.com/macros/s/AKfycbwHeubA5Gnc2HEpI2DWIhGKgI39v5tr2yMfdKLJCG7CulckrIvpZPrB-Bym_I4lAa0R/exec";
+    const apiUrl = "https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec";
 
     // Fonction pour ouvrir une popup
     function openModal(modalId) {
@@ -463,6 +469,37 @@ selectElement.addEventListener("change", () => adjustSelectWidth(selectElement))
     
     
     
+  </script>
+  <script>
+    // Fonction pour récupérer les valeurs de "tournee" via l'API Google Apps Script
+    function loadTourneeValues() {
+      const url = 'https://script.google.com/macros/s/AKfycbyXCuIIkGhglbkUepy-GB6b56kRLq7zNK-RRoIs-IzesMDuyrjm1iAUrXuSBh3gtaXa/exec?action=getTourneeValues'; // Remplacez par votre ID de script Apps Script
+
+      // Appel AJAX à l'API Google Apps Script pour obtenir les données
+      fetch(url)
+        .then(response => response.json()) // Convertit la réponse JSON en tableau
+        .then(data => {
+          const dropdown = document.getElementById('tourneeDropdown');
+          dropdown.innerHTML = ''; // Effacer les options existantes
+
+          // Ajouter une option vide au début
+          const defaultOption = document.createElement('option');
+          defaultOption.text = 'Sélectionner une tournée';
+          dropdown.appendChild(defaultOption);
+
+          // Ajouter les valeurs de "tournee" au dropdown
+          data.forEach(tournee => {
+            const option = document.createElement('option');
+            option.value = tournee;
+            option.text = tournee;
+            dropdown.appendChild(option);
+          });
+        })
+        .catch(error => console.error('Erreur lors du chargement des valeurs de la tournée:', error));
+    }
+
+    // Appeler la fonction dès que la page est chargée
+    window.onload = loadTourneeValues;
   </script>
 </body>
 </html>

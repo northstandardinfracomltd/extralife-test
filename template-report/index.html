@@ -1,6 +1,4 @@
-J'ai un bug, quand je modifie les données de mes deux premières colonnes "titre" et "couleur" ça fonctionne ça enregistre bien mes modificatiosn, 
-par contre quand je veux modifier les données de "tournee" ça ne fonctionne pas ça n'enregistre pas.
-Trouve le bug 
+J'ai une colonne avec des données 
  
 
 <!DOCTYPE html>
@@ -266,7 +264,7 @@ color: white;
       <input type="text" id="titre" name="titre" required>
       <label for="couleur">Couleur :</label>
       <input type="text" id="couleur" name="couleur" required>
-            <label for="tournee">Tournée :</label>
+      <label for="tournee">Tournée :</label>
       <input type="text" id="tournee" name="tournee" required>
       <button type="submit">Enregistrer</button>
     </form>
@@ -281,7 +279,7 @@ color: white;
       <input type="text" id="edit-titre" name="titre" required>
       <label for="edit-couleur">Couleur :</label>
       <input type="text" id="edit-couleur" name="couleur" required>
-            <label for="edit-tournee">Tournée :</label>
+      <label for="edit-tournee">Tournée :</label>
       <input type="text" id="edit-tournee" name="tournee" required>
       
       <input type="hidden" id="edit-row-index" name="rowIndex">
@@ -302,7 +300,7 @@ color: white;
     </tbody>
   </table>
   <script>
-    const apiUrl = "https://script.google.com/macros/s/AKfycbx525m0shnFBhOG6iq2tQxQbMlsJHnpf8lksofgrGdMLqb35JVKQ0K7TYLsT9Gspz_8/exec";
+    const apiUrl = "https://script.google.com/macros/s/AKfycbwHeubA5Gnc2HEpI2DWIhGKgI39v5tr2yMfdKLJCG7CulckrIvpZPrB-Bym_I4lAa0R/exec";
 
     // Fonction pour ouvrir une popup
     function openModal(modalId) {

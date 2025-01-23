@@ -1,5 +1,6 @@
-J'ai une colonne avec des données 
- 
+J'ai une colonne nommée "tournee" avec des données.
+Au lieu d'un champ edit simple quand je suis dans le form edit, je veux un type de field dropdown qui propose les values de toutes les values des records dans la colonne tournee. 
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -280,7 +281,9 @@ color: white;
       <label for="edit-couleur">Couleur :</label>
       <input type="text" id="edit-couleur" name="couleur" required>
       <label for="edit-tournee">Tournée :</label>
-      <input type="text" id="edit-tournee" name="tournee" required>
+<select id="edit-tournee" name="tournee" required>
+  <!-- Options dynamiques insérées ici -->
+</select>
       
       <input type="hidden" id="edit-row-index" name="rowIndex">
       <button class="actionbtn" type="submit">Modifier</button>
@@ -457,6 +460,9 @@ const selectElement = document.getElementById("colorFilter");
 adjustSelectWidth(selectElement);
 selectElement.addEventListener("change", () => adjustSelectWidth(selectElement));
 
+    
+    
+    
   </script>
 </body>
 </html>

@@ -278,7 +278,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
     <div class="right-panel">
         <form class="login-form" id="loginForm">
             <h1>Accès Infogérance</h1>
-            <p>Connectez-vous pour accéder à l'environnement pour la gestion des opérations.</p>
+            <p>Accédez à la console d'administration pour consulter les données ou effectuer des opérations.</p>
           
     
           
@@ -332,8 +332,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
     <script>
         // Identifiants valides
         const users = {
-            "User1": "123456",
-            "User2": "654321"
+            "": "",
         };
 
         // Gestion du formulaire
@@ -345,7 +344,7 @@ background: color(display-p3 0.12 0.28 0.29) ;
 
             if (users[username] && users[username] === password) {
                 // Redirection si les identifiants sont corrects
-                window.location.href = '/290gfh874jkd992dgz773jkd921ols732yui290gfh874jkd992dgz773jkd921ols732yui';
+                window.location.href = '/';
             } else {
                 // Affichage du message d'erreur
                 document.getElementById('error').style.display = 'block';

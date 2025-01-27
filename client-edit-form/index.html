@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Matériel</title>
+    <style>
+
+/* Styles généraux de la page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+      
+                              ::selection {
+        background-color: #ffd00082;
+        color: #1b1b20;
+      }
+
+      
+            @font-face {
+        font-family: fin;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Light.woff2?v=1737237373534")
+          format("opentype");
+      }
+      
+      
+                  @font-face {
+        font-family: regular;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Regular.woff2?v=1737237406737")
+          format("opentype");
+      }
+      
+      
+                        @font-face {
+        font-family: gras;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Bold.woff2?v=1737237442516")
+          format("opentype");
+      }
+      
+      
+/* Conteneur principal du formulaire */
+.materielform {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0px;
+    background: #73313100;
+    border-radius: 16px;  
+}
+
+/* Chaque section possède un border discret et pas de background */
+.materielsection {
+    margin-bottom: 30px;
+    background: #73313100;
+    border: 0px solid #cccccc38;
+    border-radius: 0px;
+    padding: 15px;
+    border-bottom: 1px solid #dadada;
+}
+      
+      /* Chaque section possède un border discret et pas de background */
+.materielsectionX {
+    margin-bottom: -30px;
+    border: 0px solid #ccc;
+    padding: 15px;
+    margin-top: -38px;
+}
+
+
+/* Titres de section en 24px */
+.materielsection h2 {
+background: #26343c;
+    border: 2px solid #555a65;
+    border-radius: 8px;
+    padding: 4px 7px;
+    font-size: 10px;
+    color: #ffffff;
+    text-transform: uppercase;
+    display: inline-block;
+    font-family: "gras" !important;
+    font-weight: 100;
+    cursor: default;
+}
+
+/* Disposition en colonnes */
+.materielrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+      
+      /* Style initial du bouton */
+.synchroniser-btn {
+    background: color(display-p3 0.12 0.28 0.29);
+    font-family: "fin" !important;
+    font-weight: 100;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+      .synchroniser-btn:hover {
+      color(display-p3 0.18 0.4 0.41);
+    box-shadow: 0 0 0px 4px #2184873d;
+      }
+
+      
+/* Style du bouton au clic, avec opacité réduite */
+.synchroniser-btn.clicked {
+  opacity: 0.5;
+}
+
+
+.materielcol {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* Labels en 12px */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 12px;
+  
+      font-family: "fin" !important;
+    font-weight: 100;
+}
+
+/* Styles de base pour tous les champs (text, select, button, etc.) */
+input,
+select,
+button {
+          
+    font-family: "fin" !important;
+    font-weight: 100;
+    background-color: #ffffff;
+    border: 1px solid #dadada;
+    border-radius: 10px;
+    padding: 12px;
+    color: #333333;
+    margin-bottom: 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+    /* transition: box-shadow 0.2s; */
+    max-width: 100%;
+    outline: none; /* Désactive le contour bleu */
+  cursor: pointer;
+
+}
+
+    input:focus,
+select:focus,
+button:focus   {
+  outline: none; /* Désactive le contour bleu au focus */
+}
+      
+      
+      /* Style pour rendre le champ non éditable */
+.disabled:disabled {
+background-color: #dadada4a;
+    color: #333333  !important;
+    cursor: not-allowed;
+    border: 1px solid #c6c6c67d;
+}
+      
+      .disabled:hover {
+box-shadow: 0 0 0px 4px #ffcf0300 !important;
+}
+
+/* Si vous voulez personnaliser le style du placeholder */
+.disabled:disabled::placeholder {
+  color: #333333 !important;  /* Couleur du texte du placeholder */
+}
+
+      
+      
+/* Effet hover : on ajoute une légère ombre ou un contour */
+input:hover,
+select:hover,
+button:hover {
+    box-shadow: 0 0 0px 4px #ffcf0338;
+}
+
+/* Ajustements spécifiques aux différents types de champs */
+
+/* 1. Champs texte (y compris email, tel, etc.) */
+input[type='text'],
+input[type='email'],
+input[type='tel'] {
+     min-width: 400px;
+    max-width: 400px; /* Largeur max pour les champs texte */
+}
+input[type='date'] {
+  min-width: 400px;
+  max-width: 400px;
+  -webkit-appearance: none;  /* Désactive le style par défaut sur Webkit */
+  -moz-appearance: textfield;  /* Pour Firefox */
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+}
+
+/* Masquer l'icône calendrier dans Chrome/Safari/Edge */
+input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+
+/* 3. Champs select (on bloque l'icône de flèche vers le bas) */
+select {
+  min-width: 400px;
+    max-width: 400px; /* Largeur max pour les dropdown */
+    -webkit-appearance: none; /* Supprime la flèche par défaut sur Chrome/Safari */
+    -moz-appearance: none;    /* Supprime la flèche par défaut sur Firefox */
+    background-image: none;   /* Supprime la flèche par défaut (IE/Edge) */
+}
+
+/* Zones de toggle (activé/désactivé) */
+.materieltoggle {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.materieltoggle input[type='checkbox'] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Masque les sections par défaut */
+.materielhidden {
+    display: none;
+}
+/* Bouton de soumission */
+.materielsubmit {
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, .2), inset 0 -1px 2px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .05);
+    width: 100%;
+    padding: 12px;
+    background: color(display-p3 0.12 0.28 0.29);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-family: "fin" !important;
+    font-weight: 100;
+    text-align: center;
+    text-decoration: none;
+}
+
+.materielsubmit:hover {
+    background: color(display-p3 0.26 0.57 0.58); /* Couleur un peu plus foncée au survol */
+      box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, .2), inset 0 -1px 2px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .05);
+
+}
+
+      
+      
+      .flat7 {
+    font-family: "fin" !important;
+    font-weight: 100;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 14px;
+    margin-right: 10px;
+    color: #cccccc;
+}
+      
+      
+      /* Style du label pour le toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+    width: 41px;
+    height: 22px;
+}
+
+/* Cacher la case à cocher */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Le slider (fond et forme du toggle) */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Le bouton du toggle */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+/* Effet quand la case est cochée */
+input:checked + .slider {
+  background-color: #0d6468;
+}
+
+input:checked + .slider:before {
+  transform: translateX(19px);
+}
+
+
+      .optionselector {
+font-family: "fin" !important;
+    font-weight: 100;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 14px;
+    margin-left: 4px;
+    color: #cccccc;
+}
+
+      
+      
+    </style>
+</head>
+<body>
+    <form class="materielform">
+        <!-- Section 1: Général -->
+        <div class="materielsection">
+            <h2>GÉNÉRAL</h2>
+                    <label for="nom">Nom de l'entité</label>
+                    <input type="text" id="nom" placeholder="Ex. ACME SARL">
+
+    <label for="tel-referent">Tél</label>
+    <input type="text" id="tel-referent" placeholder="Saisir le numéro de téléphone principal">
+
+    <label for="tel-secondaire-referent">Tél secondaire</label>
+    <input type="text" id="tel-secondaire-referent" placeholder="Saisir le numéro de téléphone secondaire">
+  
+
+    <label for="mail-referent">Mail</label>
+    <input type="email" id="mail-referent" placeholder="Saisir l'adresse mail principale">
+
+    <label for="mail-secondaire-referent">Mail secondaire</label>
+    <input type="email" id="mail-secondaire-referent" placeholder="Saisir l'adresse mail secondaire">
+
+
+                </div>
+              
+              
+              <!-- Section 17 : CONTACT SUR SITE -->
+<div class="materielsection">
+  
+    <h2>LOCALISATION FACTURATION</h2>
+    <!-- Toggle ON/OFF -->
+    <div class="materieltoggle">
+      
+            
+        
+                      <label class="switch">
+    <input type="checkbox" id="toggle-contrat" onclick="toggleSection('klm')">
+    <span class="slider"></span>
+</label>
+<p class="optionselector">Optionnel</p>
+      
+      
+      
+      
+      
+    </div>
+  
+   <div id="klm" class="materielhidden">
+              <label for="numero-voie">Numéro voie</label>
+            <input type="text" id="numero-voie" placeholder="Saisir le numéro de voie">
+
+            <label for="voie">Voie</label>
+            <input type="text" id="voie" placeholder="Saisir la voie">
+
+            <label for="code-postal">Code postal</label>
+            <input type="text" id="code-postal" placeholder="Saisir le code postal">
+
+            <label for="ville">Ville</label>
+            <input type="text" id="ville" placeholder="Saisir la ville">
+  
+    <!-- Contenu de la section (une seule colonne) -->
+
+</div></div>
+      
+          
+
+
+   
+      <div class="materielsectionX">
+    <button type="submit" class="materielsubmit">Enregistrer</button>
+</div>
+    
+    </form>
+
+    <script>
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('materielhidden');
+        }
+    </script>
+</body>
+</html>

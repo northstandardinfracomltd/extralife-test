@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste d'Alertes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+      
+      
+                              ::selection {
+        background-color: #ffd00082;
+        color: #1b1b20;
+      }
+
+      
+            @font-face {
+        font-family: fin;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Light.woff2?v=1737237373534")
+          format("opentype");
+      }
+      
+      
+                  @font-face {
+        font-family: regular;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Regular.woff2?v=1737237406737")
+          format("opentype");
+      }
+      
+      
+                        @font-face {
+        font-family: gras;
+        font-weight: bold;
+        src: url("https://cdn.glitch.global/0816c511-4db0-4ca3-a29b-713776b05f01/NewsonGLS-WEB-Bold.woff2?v=1737237442516")
+          format("opentype");
+      }
+      
+      
+        .container {
+            max-width: 100%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+                font-family: "fin" !important;
+    font-weight: 100;
+        }
+        h2 {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+                font-family: "fin" !important;
+    font-weight: 100;
+        }
+        .alert {
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 11px;
+    margin-bottom: 15px;
+    position: relative;
+}
+      
+      
+             .xcv {
+    background: #26343c;
+    border: 2px solid #555a65;
+    border-radius: 8px;
+    padding: 4px 7px;
+    font-size: 10px;
+    color: #ffffff;
+    text-transform: uppercase;
+    display: inline-block;
+    font-family: "gras" !important;
+    font-weight: 100;
+    cursor: default;
+        }
+  
+        .alert p {
+            font-size: 16px;
+                font-family: "fin" !important;
+    font-weight: 100;
+        }
+        .btn-terminer {
+    background: color(display-p3 0.12 0.28 0.29);
+    font-family: "fin" !important;
+    font-weight: 100;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 16px;
+          margin-right: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+        }
+        .btn-terminer:hover {
+  background-color: color(display-p3 0.18 0.4 0.41);
+    box-shadow: 0 0 0px 4px #2184873d;
+        }
+        .alert.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="alert">
+      <span class="xcv">ÉCHÉANCE PÉREMPTION ÉLECTRODE</span>
+      <p>L'électrode adulte SN123456 du défibrillateur SN7891911 est périmée le 26/01/2025.</p>
+      <button class="btn-terminer" >Consulter</button>
+      <button class="btn-terminer" >Épingler</button>
+        <button class="btn-terminer" onclick="markAsDone(this)">Terminer</button>
+    
+    </div>
+
+    <div class="alert">
+      <span class="xcv">DÉFIBRILLATEUR EN FIN DE GARANTIE</span>
+      <p>Le défibrillateur SN7891911 n'est plus sous garantie fabricant le 22/01/2025.</p>
+      <button class="btn-terminer" >Consulter</button> <button class="btn-terminer" >Épingler</button>
+        <button class="btn-terminer" onclick="markAsDone(this)">Terminer</button>
+    
+    </div>
+  
+
+
+</div>
+
+<script>
+    function markAsDone(button) {
+        // Trouver l'élément parent de l'alerte (la div .alert)
+        const alert = button.closest('.alert');
+        // Ajouter la classe "hidden" pour masquer l'alerte
+        alert.classList.add('hidden');
+    }
+</script>
+
+</body>
+</html>
